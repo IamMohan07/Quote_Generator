@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Quote Generator</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href ="style.css">
+        <link rel="icon" href="images/2.png">
+
+    </head>
+    <body>
+
+        <header class="header">
+
+            <a class="logo">Designed By Mohan </a>
+
+            <nav class="navbar">
+                <a href="https://portfolio-master-minders.netlify.app/" target="_blank">Portfolio</a>
+                <a href="https://github.com/IamMohan07" target="_blank" >Github</a>
+                <a href="http://t.me/my_dear_lightbright" target="_blank" >Instagram</a>
+                <a href="www.linkedin.com/in/amohankumar07" target="_blank" >Linkedin</a>
+                <a href="mailto:mohankumar071104@gmail.com" target="_blank" >Gmail</a>
+            </nav>
+        </header>
+
+
+<div class="quote-box">
+    <h2>Quote of the day</h2>
+    <blockquote id="quote">Loading......</blockquote>
+    <span id="author">Loading....</span>
+    <div>
+        <button onclick="getquote(api_url);">New Quote</button>
+        <button onclick="facebook()">FB Feed</button>
+    </div>
+
+    <script>
+
+        const quote = document.getElementById("quote");
+        const author = document.getElementById("author");
+
+        const api_url = "https://api.quotable.io/random" ;
+
+        async function getquote(url){
+            const response = await fetch(url);
+            var data = await response.json();
+
+            quote.innerHTML = data.content;
+            author.innerHTML = data.author;
+        }
+
+        getquote(api_url);
+
+        function facebook(){
+            window.open("https://www.facebook.com/sharer/sharer.php?text=" + quote.innerHTML + "----- by " + author.innerHTML , "FB Feed" , "width=600 , height = 300")
+        }
+
+    </script>
+</div>
+    </body>
+</html>
